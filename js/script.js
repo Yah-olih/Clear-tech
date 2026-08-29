@@ -1,4 +1,4 @@
-// MENU MOBILE CLEAR TECH
+// MENU MOBILE Clean TECH
 function toggleMenu(event) {
   if (event) event.stopPropagation();
   const menu = document.getElementById('mobile-menu');
