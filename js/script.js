@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ROLAR PARA O TOPO (INÍCIO / LOGO)
 document.addEventListener('DOMContentLoaded', () => {
   const linksInicio = document.querySelectorAll('a[href="#inicio"]');
-  
+
   linksInicio.forEach(link => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
@@ -80,4 +80,33 @@ document.addEventListener('DOMContentLoaded', () => {
       closeMenu();
     });
   });
+});
+
+let startY = 0;
+let currentY = 0;
+let isPulling = false;
+
+window.addEventListener('touchstart', (e) => {
+
+  if (window.scrollY === 0) {
+    startY = e.touches[0].clientY;
+    isPulling = true;
+  }
+}, { passive: true });
+
+window.addEventListener('touchmove', (e) => {
+  if (!isPulling) return;
+  currentY = e.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener('touchend', () => {
+  if (!isPulling) return;
+
+  if (currentY - startY > 120 && window.scrollY === 0) {
+    window.location.reload(); // Atualiza a página
+  }
+
+  isPulling = false;
+  startY = 0;
+  currentY = 0;
 });
