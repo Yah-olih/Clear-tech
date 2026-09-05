@@ -24,7 +24,6 @@ function closeMenu() {
   closeIcon.style.display = 'none';
 }
 
-// Fechar o menu mobile quando o usuário toca/clica em QUALQUER lugar fora do menu
 document.addEventListener('click', (event) => {
   const menu = document.getElementById('mobile-menu');
   const hamburger = document.querySelector('.hamburger');
@@ -36,17 +35,14 @@ document.addEventListener('click', (event) => {
   }
 });
 
-// Fechar o menu mobile imediatamente quando o usuário começa a rolar/escrolar a tela
 window.addEventListener('scroll', () => {
   closeMenu();
 });
 
-// Fechar o menu mobile com a tecla Escape
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeMenu();
 });
 
-// SCROLL REVEAL (INTERSECTION OBSERVER)
 document.addEventListener('DOMContentLoaded', () => {
   const revealElements = document.querySelectorAll('.reveal');
 
@@ -66,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 });
 
-// ROLAR PARA O TOPO (INÍCIO / LOGO)
 document.addEventListener('DOMContentLoaded', () => {
   const linksInicio = document.querySelectorAll('a[href="#inicio"]');
 
@@ -109,4 +104,22 @@ window.addEventListener('touchend', () => {
   isPulling = false;
   startY = 0;
   currentY = 0;
+});
+
+const whatsappNumber = "5511985297730";
+
+document.querySelectorAll(".service-card").forEach(card => {
+  // Adiciona estilo de ponteiro do mouse para indicar que o card é clicável
+  card.style.cursor = "pointer";
+
+  card.addEventListener("click", event => {
+    // Procura o link do WhatsApp dentro do card para pegar o nome do serviço
+    const serviceLink = card.querySelector(".whatsapp-service");
+    const service = serviceLink ? serviceLink.dataset.service : "serviço";
+
+    const message = `Olá! Gostaria de solicitar um orçamento para ${service}.`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  });
 });
