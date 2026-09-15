@@ -109,11 +109,10 @@ window.addEventListener('touchend', () => {
 const whatsappNumber = "5511985297730";
 
 document.querySelectorAll(".service-card").forEach(card => {
-  // Adiciona estilo de ponteiro do mouse para indicar que o card é clicável
+
   card.style.cursor = "pointer";
 
   card.addEventListener("click", event => {
-    // Procura o link do WhatsApp dentro do card para pegar o nome do serviço
     const serviceLink = card.querySelector(".whatsapp-service");
     const service = serviceLink ? serviceLink.dataset.service : "serviço";
 
