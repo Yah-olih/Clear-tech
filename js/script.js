@@ -106,7 +106,7 @@ window.addEventListener('touchend', () => {
   currentY = 0;
 });
 
-const whatsappNumber = "5511985297730";
+const whatsappNumber = "5511914011714";
 
 document.querySelectorAll(".service-card").forEach(card => {
 
